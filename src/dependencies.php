@@ -18,7 +18,7 @@ $container['logger'] = function ($c) {
 
 // Using Twig as template engine
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('templates', [
+    $view = new \Slim\Views\Twig($container->get('settings')['renderer']['template_path'], [
         'cache' => false //'cache'
     ]);
     $view->addExtension(new \Slim\Views\TwigExtension(
